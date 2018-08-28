@@ -36,7 +36,7 @@ class CsdnBlogSpider(threading.Thread):
 	def find_title(self,data):
 		data = data.decode('utf-8')
 		begin = data.find(r'<title') + 7
-		end = data.find('\r\n',begin)
+		end = data.find('</title',begin)
 		title = data[begin:end]
 		return title
 
