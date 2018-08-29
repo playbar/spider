@@ -1,0 +1,4 @@
+*.pyc
+*.swp
+/utils/logs/
+/spider/logs/
