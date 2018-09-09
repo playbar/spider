@@ -41,11 +41,13 @@ class GPINFO(object):
             record_d = {}
             #代号
             num = a.get_text().split('(')[1].strip(')')
-            if not (num.startswith('00') or num.startswith('60')):continue #只需要6*/0*
+            if not (num.startswith('00') or num.startswith('60')):
+                continue #只需要6*/0*
             record_d['num']=num
             #名称
             name = a.get_text().split('(')[0]
             record_d['name']=name
+            print(name);
             #详情页
             detail_url = a['href']
             record_d['detail_url']=detail_url
@@ -78,7 +80,7 @@ def main():
     test = GPINFO()
     result = test.BaseData
     #[浦发银行，总市值    净资产    净利润    市盈率    市净率    毛利率    净利率    ROE] roe:净资产收益率]
-    top_10 = heapq.nlargest(10,result,key=lambda r:float(r['data'][7].strip('%')))
+    top_10 = heapq.nlargest(100,result,key=lambda r:float(r['data'][7].strip('%')))
     for i in top_10:
         print(i['data'])
 
